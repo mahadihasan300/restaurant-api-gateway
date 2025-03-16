@@ -1,0 +1,26 @@
+spring:
+ cloud:
+   gateway:
+     routes:
+       - id: PATHOK-DATA-LOADER
+         uri: lb://PATHOK-DATA-LOADER
+         predicates:
+           - Path=/dataLoader/**
+         filters:
+           - AuthenticationFilter
+
+       - id: PATHOK-AUTH-SERVICE
+         uri: lb://PATHOK-AUTH-SERVICE
+         predicates:
+           - Path=/auth/**
+
+ application:
+   name: PATHOK-API-GATEWAY
+
+eureka:
+  client:
+    service-url:
+      defaultZone : http://localhost:8761/eureka/
+
+server:
+  port: 8080
