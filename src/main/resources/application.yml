@@ -2,20 +2,20 @@ spring:
  cloud:
    gateway:
      routes:
-       - id: PATHOK-DATA-LOADER
-         uri: lb://PATHOK-DATA-LOADER
+       - id: RESTAURANT-DATA-LOADER
+         uri: lb://RESTAURANT-DATA-LOADER
          predicates:
            - Path=/dataLoader/**
          filters:
            - AuthenticationFilter
 
-       - id: PATHOK-AUTH-SERVICE
-         uri: lb://PATHOK-AUTH-SERVICE
+       - id: RESTAURANT-AUTH-SERVICE
+         uri: lb://RESTAURANT-AUTH-SERVICE
          predicates:
            - Path=/auth/**
 
  application:
-   name: PATHOK-API-GATEWAY
+   name: RESTAURANT-API-GATEWAY
 
 eureka:
   client:

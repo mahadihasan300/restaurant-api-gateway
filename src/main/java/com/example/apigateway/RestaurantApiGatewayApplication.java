@@ -6,10 +6,10 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 @SpringBootApplication
 @EnableDiscoveryClient
-public class PathokApiGatewayApplication {
+public class RestaurantApiGatewayApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(PathokApiGatewayApplication.class, args);
+		SpringApplication.run(RestaurantApiGatewayApplication.class, args);
 	}
 
 }
