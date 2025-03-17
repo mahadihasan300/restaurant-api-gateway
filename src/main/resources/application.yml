@@ -9,6 +9,13 @@ spring:
          filters:
            - AuthenticationFilter
 
+       - id: RESTAURANT-MANAGEMENT-SERVICE
+         uri: lb://RESTAURANT-MANAGEMENT-SERVICE
+         predicates:
+           - Path=/management/**
+         filters:
+           - AuthenticationFilter
+
        - id: RESTAURANT-AUTH-SERVICE
          uri: lb://RESTAURANT-AUTH-SERVICE
          predicates:
