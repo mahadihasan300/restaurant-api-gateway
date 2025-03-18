@@ -25,6 +25,13 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
     @Override
     public GatewayFilter apply(Config config) {
         return ((exchange, chain) -> {
+
+            // Check if the path is not secured (e.g., /management/swagger-ui)
+            String path = exchange.getRequest().getURI().getPath();
+            if (path.startsWith("/management/swagger-ui")  || path.startsWith("/management/v3/api-docs")) {
+                return chain.filter(exchange); // Skip authentication for Swagger UI
+            }
+
             if (validator.isSecured.test(exchange.getRequest())) {
                 //header contains token or not
                 if (!exchange.getRequest().getHeaders().containsKey(HttpHeaders.AUTHORIZATION)) {
