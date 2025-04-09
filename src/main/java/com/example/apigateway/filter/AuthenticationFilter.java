@@ -28,7 +28,7 @@ public class AuthenticationFilter extends AbstractGatewayFilterFactory<Authentic
 
             // Check if the path is not secured (e.g., /management/swagger-ui)
             String path = exchange.getRequest().getURI().getPath();
-            if (path.startsWith("/management/swagger-ui")  || path.startsWith("/management/v3/api-docs")) {
+            if (path.startsWith("/management/swagger-ui")  || path.startsWith("/management/v3/api-docs") || path.startsWith("/management/demo")) {
                 return chain.filter(exchange); // Skip authentication for Swagger UI
             }
 
