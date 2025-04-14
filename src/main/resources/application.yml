@@ -1,33 +1,3 @@
 spring:
- cloud:
-   gateway:
-     routes:
-       - id: RESTAURANT-DATA-LOADER
-         uri: lb://RESTAURANT-DATA-LOADER
-         predicates:
-           - Path=/dataLoader/**
-         filters:
-           - AuthenticationFilter
-
-       - id: RESTAURANT-MANAGEMENT-SERVICE
-         uri: lb://RESTAURANT-MANAGEMENT-SERVICE
-         predicates:
-           - Path=/management/**
-         filters:
-           - AuthenticationFilter
-
-       - id: RESTAURANT-AUTH-SERVICE
-         uri: lb://RESTAURANT-AUTH-SERVICE
-         predicates:
-           - Path=/auth/**
-
- application:
-   name: RESTAURANT-API-GATEWAY
-
-eureka:
-  client:
-    service-url:
-      defaultZone : http://localhost:8761/eureka/
-
-server:
-  port: 8080
+  profiles:
+    active: dev  # default profile
